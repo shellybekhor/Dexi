@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/game1_bg"
     tools:context=".GameSylsActivity">
 
 
@@ -11,9 +12,8 @@
         android:id="@+id/nextConst"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_centerVertical="true"
-        android:layout_marginStart="46dp"
+        android:layout_alignTop="@+id/prevConst"
+        android:layout_toStartOf="@+id/speedBar"
         android:text="T"
         android:textSize="40sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -24,9 +24,9 @@
         android:id="@+id/prevConst"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_centerVertical="true"
-        android:layout_marginEnd="59dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="245dp"
+        android:layout_toEndOf="@+id/speedBar"
         android:text="T"
         android:textSize="40sp"
         app:layout_constraintBaseline_toBaselineOf="@+id/nextConst"
@@ -36,7 +36,9 @@
         android:id="@+id/curConst"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="193dp"
         android:background="@drawable/testcircle1"
         android:fontFamily="@font/alef_regular"
         android:gravity="center"
@@ -50,8 +52,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="26dp"
-        android:layout_marginTop="39dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="11dp"
         android:onClick="backToMenu"
         android:text="Back" />
 
@@ -73,9 +75,9 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="83dp"
-        android:progress="1000"
         android:max="2000"
-        android:min="500" />
+        android:min="500"
+        android:progress="1000" />
 
     <ImageView
         android:id="@+id/progress"
@@ -83,7 +85,7 @@
         android:layout_height="50dp"
         android:layout_alignBottom="@+id/pauseButton"
         android:layout_alignStart="@+id/stopButton"
-        android:src="@color/colorPrimary"
-        android:contentDescription="TODO" />
+        android:contentDescription="TODO"
+        android:src="@color/colorPrimary" />
 
 </RelativeLayout>
