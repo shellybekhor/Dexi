@@ -65,7 +65,7 @@ public class RandomizerImplement implements SequenceRandomizer {
         String letterKey = consonantKeys.get(randomMaker.nextInt(consonantKeysSize));
         //if the letter has an end-of-word version, return that
         if (hasEndConsonant.containsKey(letterKey)) {
-            return letterKey;
+            return letterKey+"_SOFIT";
         }
         return letterKey;
     }
