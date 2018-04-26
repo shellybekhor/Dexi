@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.SeekBar;
 
-public class GameSylsActivity extends Activity {
+public class GameSylsActivity extends AppCompatActivity {
     private static final int NUM_SYLS = 100;
 
     GameSylsRunner gameSylsRunner;

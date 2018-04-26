@@ -13,7 +13,7 @@ import android.widget.SeekBar;
 import backend.RandomizerImplement;
 import backend.Syllable;
 
-public class MainActivity extends Activity {
+public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
