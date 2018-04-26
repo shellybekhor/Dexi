@@ -70,8 +70,9 @@ public class RandomizerImplement implements SequenceRandomizer {
         }
         return letterKey;
     }
-
+    //private method that makes syllable to compose a word
     private Syllable makeSyllable(boolean endWord, boolean consonantAtEnd){
+        //get a letter
         String key = getNotEndConsonant("");
         String rep = consonant.get(key);
         String notToRepeat = rep;
@@ -80,31 +81,38 @@ public class RandomizerImplement implements SequenceRandomizer {
         key += tmpKey;
         rep += vowels.get(tmpKey);
         tmpKey = "";
+        //add a last consonant if we are at the end of the word
         if (endWord) {
             tmpKey = getEndConsonant(notToRepeat);
             rep+=consonant.get(tmpKey);
+            key += SEPERATOR+tmpKey;
         }
+        //add a consonant with SHVA if we are the middle of the word and we want to
         else if (consonantAtEnd) {
             tmpKey = getNotEndConsonant(notToRepeat);
             rep+=consonant.get(tmpKey) + SHVA;
+            key += SEPERATOR+tmpKey;
         }
-        key += SEPERATOR+tmpKey;
         return new Syllable(key,rep);
     }
 
     @Override
+    //Create a random word
     public Word getWord(){
         List<Syllable> syllables = new ArrayList<>();
+        //the first syllable with consonant at the end
         if (randomMaker.nextBoolean()){
             syllables.add(makeSyllable(false, true));
-        } else {
-            syllables.add(makeSyllable(false, false));
+        }
+        //the first syllable without a consonant at the end
+        else {
             syllables.add(makeSyllable(false, false));
         }
-        syllables.add(makeSyllable(true, true));
+        //the last syllable in the word
+        syllables.add(makeSyllable(true, false));
         return new Word(syllables);
     }
-
+    //Create a random syllable
     @Override
     public Syllable getSyllable() {
         // add a letter
