@@ -1,4 +1,4 @@
-package beckend;
+package backend;
 
 import java.util.List;
 
