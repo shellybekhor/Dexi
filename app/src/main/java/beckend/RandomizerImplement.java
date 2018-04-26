@@ -69,13 +69,13 @@ public class RandomizerImplement implements SequenceRandomizer {
         return consonant.get(letterKey);
     }
 
-    private String makeSyllable(boolean endWord){
+    private String makeSyllable(boolean endWord, boolean consonantAtEnd){
         String syllable = getNotEndConsonant("");
         String notToRepeat = syllable;
         syllable = syllable.concat(vowels.get(vowelsKeys.get(randomMaker.nextInt(vowelsKeysSize))));
         if (endWord)
             syllable = syllable.concat(getEndConsonant(notToRepeat));
-        else if (randomMaker.nextBoolean()) {
+        else if (consonantAtEnd) {
             syllable = syllable.concat(getNotEndConsonant(notToRepeat)+SHVA);
         }
         return syllable;
@@ -83,12 +83,15 @@ public class RandomizerImplement implements SequenceRandomizer {
 
     @Override
     public String getWord() {
-        String word = makeSyllable(false);
-        //50% probability the word will have 3 syllables and not 2
-        if (randomMaker.nextBoolean()) {
-            word = word.concat(makeSyllable(false));
+        boolean incluseShva = randomMaker.nextBoolean();
+        String word;
+        if (incluseShva){
+            word = makeSyllable(false, true);
+        } else {
+            word = makeSyllable(false, false);
+            word = word.concat(makeSyllable(false, false));
         }
-        word = word.concat(makeSyllable(true));
+        word = word.concat(makeSyllable(true, true));
         return word;
     }
 }
