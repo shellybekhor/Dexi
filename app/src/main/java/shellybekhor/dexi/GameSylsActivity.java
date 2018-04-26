@@ -1,5 +1,6 @@
 package shellybekhor.dexi;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -7,7 +8,7 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.SeekBar;
 
-public class GameSylsActivity extends AppCompatActivity {
+public class GameSylsActivity extends Activity {
     private static final int NUM_SYLS = 100;
 
     GameSylsRunner gameSylsRunner;

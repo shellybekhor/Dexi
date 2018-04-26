@@ -18,7 +18,7 @@ public class GameSylsRunner {
     private boolean pause = false;
     private int speed = DEFAULT_SPEED;
 
-    public GameSylsRunner(AppCompatActivity app){
+    public GameSylsRunner(GameSylsActivity app){
         prev = app.findViewById(R.id.prevConst);
         cur = app.findViewById(R.id.curConst);
         next = app.findViewById(R.id.nextConst);
