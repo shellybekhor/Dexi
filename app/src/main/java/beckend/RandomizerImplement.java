@@ -71,11 +71,10 @@ public class RandomizerImplement implements SequenceRandomizer {
     private String makePhone(boolean endWord){
         String phone = getNotEndConsonant();
         phone = phone.concat(vowels.get(vowelsKeys.get(randomMaker.nextInt(vowelsKeysSize))));
-        if (randomMaker.nextBoolean()) {
-            if (endWord)
-                phone = phone.concat(getEndConsonant());
-            else
-                phone = phone.concat(getNotEndConsonant());
+        if (endWord)
+            phone = phone.concat(getEndConsonant());
+        else if (randomMaker.nextBoolean()) {
+            phone = phone.concat(getNotEndConsonant());
         }
         return phone;
     }
