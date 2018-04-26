@@ -68,16 +68,28 @@ public class GameWordRunner {
 
     private void setTimer(){
         for (int i =0; i < 1000; ++i) {
-            try {
-                timerThread.sleep(1);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-            timer.getLayoutParams().width = progressCalc(i);
+            setTimeout(new Runnable() {
+                @Override
+                public void run() {
+                    timer.getLayoutParams().width += 6;
+                }
+            }, 1);
+
         }
     }
 
-    private int progressCalc(int cur){
-        return 10 + (cur * 6);
+    public static void setTimeout(final Runnable runnable, final int delay){
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Thread.sleep(delay);
+                    runnable.run();
+                } catch (Exception e) {
+                    System.err.println(e);
+                }
+            }
+        }).start();
+
     }
 }
