@@ -44,7 +44,6 @@ public class DBBuilder {
         map.put("SHIN", "שׁ");
         map.put("SIN", "שׂ");
         map.put("TAF", "ת");
-        map.put("EMPTY", "⬚");
         return map;
     }
 
