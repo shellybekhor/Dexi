@@ -15,6 +15,7 @@ public class RandomizerImplement implements SequenceRandomizer {
     static int consonantKeysSize;
     Random randomMaker;
     static String EMPTY = "⬚";
+    static String SHVA = "ְ";
 
 
     public RandomizerImplement(){
@@ -50,42 +51,44 @@ public class RandomizerImplement implements SequenceRandomizer {
         }
     }
     // returns only regular consonants (not end of word consonant)
-    private String getNotEndConsonant(){
-        String phoneKey = consonantKeys.get(randomMaker.nextInt(consonantKeysSize));
-        // looking for a regular consonant and not end consonant
-        while (endConsonant.containsKey(phoneKey)) {
-            phoneKey = consonantKeys.get(randomMaker.nextInt(consonantKeysSize));
+    private String getNotEndConsonant(String notToRepeat){
+        String letterKey = consonantKeys.get(randomMaker.nextInt(consonantKeysSize));
+        // looking for a regular letter (not terminal letter) that not just have been written
+        while (consonant.get(letterKey)==notToRepeat||endConsonant.containsKey(letterKey)) {
+            letterKey = consonantKeys.get(randomMaker.nextInt(consonantKeysSize));
         }
-        return consonant.get(phoneKey);
+        return consonant.get(letterKey);
     }
 
-    private String getEndConsonant(){
-        String phoneKey = consonantKeys.get(randomMaker.nextInt(consonantKeysSize));
+    private String getEndConsonant(String notToRepeat){
+        String letterKey = consonantKeys.get(randomMaker.nextInt(consonantKeysSize));
         //if the letter has an end-of-word version, return that
-        if (hasEndConsonant.containsKey(phoneKey)) {
-            return hasEndConsonant.get(phoneKey);
+        if (hasEndConsonant.containsKey(letterKey)) {
+            return hasEndConsonant.get(letterKey);
         }
-        return consonant.get(phoneKey);
+        return consonant.get(letterKey);
     }
 
-    private String makePhone(boolean endWord){
-        String phone = getNotEndConsonant();
-        phone = phone.concat(vowels.get(vowelsKeys.get(randomMaker.nextInt(vowelsKeysSize))));
+    private String makeSyllable(boolean endWord){
+        String syllable = getNotEndConsonant("");
+        String notToRepeat = syllable;
+        syllable = syllable.concat(vowels.get(vowelsKeys.get(randomMaker.nextInt(vowelsKeysSize))));
         if (endWord)
-            phone = phone.concat(getEndConsonant());
+            syllable = syllable.concat(getEndConsonant(notToRepeat));
         else if (randomMaker.nextBoolean()) {
-            phone = phone.concat(getNotEndConsonant());
+            syllable = syllable.concat(getNotEndConsonant(notToRepeat)+SHVA);
         }
-        return phone;
+        return syllable;
     }
 
     @Override
     public String getWord() {
-        String word = makePhone(false);
+        String word = makeSyllable(false);
+        //50% probability the word will have 3 syllables and not 2
         if (randomMaker.nextBoolean()) {
-            word = word.concat(makePhone(false));
+            word = word.concat(makeSyllable(false));
         }
-        word = word.concat(makePhone(true));
+        word = word.concat(makeSyllable(true));
         return word;
     }
 }

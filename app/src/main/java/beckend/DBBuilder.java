@@ -80,7 +80,7 @@ public class DBBuilder {
     private static Map<String, String> buildVowelsMap() {
         Map<String, String> map = new HashMap<>();
 
-        map.put("SHVA", "ְ");
+        //map.put("SHVA", "ְ");
         map.put("HIRIQ", "ִ");
         map.put("TSERE", "ֵ");
         map.put("SEGOL", "ֶ");
