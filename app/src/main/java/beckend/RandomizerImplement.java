@@ -1,4 +1,5 @@
 package beckend;
+import java.security.Key;
 import java.util.*;
 import java.util.Random;
 
@@ -51,13 +52,14 @@ public class RandomizerImplement implements SequenceRandomizer {
         }
     }
     // returns only regular consonants (not end of word consonant)
+
     private String getNotEndConsonant(String notToRepeat){
         String letterKey = consonantKeys.get(randomMaker.nextInt(consonantKeysSize));
         // looking for a regular letter (not terminal letter) that not just have been written
         while (consonant.get(letterKey)==notToRepeat||endConsonant.containsKey(letterKey)) {
             letterKey = consonantKeys.get(randomMaker.nextInt(consonantKeysSize));
         }
-        return consonant.get(letterKey);
+        return letterKey;
     }
 
     private String getEndConsonant(String notToRepeat){
@@ -66,32 +68,40 @@ public class RandomizerImplement implements SequenceRandomizer {
         if (hasEndConsonant.containsKey(letterKey)) {
             return hasEndConsonant.get(letterKey);
         }
-        return consonant.get(letterKey);
+        return letterKey;
     }
 
-    private String makeSyllable(boolean endWord, boolean consonantAtEnd){
-        String syllable = getNotEndConsonant("");
-        String notToRepeat = syllable;
-        syllable = syllable.concat(vowels.get(vowelsKeys.get(randomMaker.nextInt(vowelsKeysSize))));
-        if (endWord)
-            syllable = syllable.concat(getEndConsonant(notToRepeat));
-        else if (consonantAtEnd) {
-            syllable = syllable.concat(getNotEndConsonant(notToRepeat)+SHVA);
+    public Syllable makeSyllable(boolean endWord, boolean consonantAtEnd){
+        String key = getNotEndConsonant("");
+        String rep = consonant.get(key);
+        String notToRepeat = rep;
+        key = key.concat("$");
+        String tmpKey = vowelsKeys.get(randomMaker.nextInt(vowelsKeysSize));
+        key += tmpKey;
+        rep += vowels.get(tmpKey);
+        tmpKey = "";
+        if (endWord) {
+            tmpKey = getEndConsonant(notToRepeat);
+            rep+=consonant.get(tmpKey);
         }
-        return syllable;
+        else if (consonantAtEnd) {
+            tmpKey = getNotEndConsonant(notToRepeat);
+            rep+=consonant.get(tmpKey) + SHVA;
+        }
+        key += "$"+tmpKey;
+        return new Syllable(key,rep);
     }
 
     @Override
-    public String getWord() {
-        boolean incluseShva = randomMaker.nextBoolean();
-        String word;
-        if (incluseShva){
-            word = makeSyllable(false, true);
+    public Word getWord(){
+        List<Syllable> syllables = new ArrayList<>();
+        if (randomMaker.nextBoolean()){
+            syllables.add(makeSyllable(false, true));
         } else {
-            word = makeSyllable(false, false);
-            word = word.concat(makeSyllable(false, false));
+            syllables.add(makeSyllable(false, false));
+            syllables.add(makeSyllable(false, false));
         }
-        word = word.concat(makeSyllable(true, true));
-        return word;
+        syllables.add(makeSyllable(true, true));
+        return new Word(syllables);
     }
 }
