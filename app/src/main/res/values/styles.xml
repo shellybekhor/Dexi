@@ -1,5 +1,5 @@
 <resources>
-    <style name="Theme.Light.NoActionBar.FullScreen" parent="AppTheme">
+    <style name="Theme.Light.NoActionBar.FullScreen" parent="Theme.AppCompat">
         <item name="windowNoTitle">true</item>
         <item name="windowActionBar">false</item>
         <item name="windowFullscreen">true</item>
