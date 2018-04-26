@@ -7,7 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import beckend.RandomizerImplement;
 import beckend.SequenceRandomizer;
 
-public class Runner {
+public class GameSylsRunner {
     private static final int DEFAULT_SPEED = 1000;
     private static final int MAX_SPEED = 2000;
     private static final int MIN_SPEED = 500;
@@ -19,7 +19,7 @@ public class Runner {
     private boolean pause = false;
     private int speed = DEFAULT_SPEED;
 
-    public Runner(AppCompatActivity app){
+    public GameSylsRunner(AppCompatActivity app){
         prev = app.findViewById(R.id.prevConst);
         cur = app.findViewById(R.id.curConst);
         next = app.findViewById(R.id.nextConst);

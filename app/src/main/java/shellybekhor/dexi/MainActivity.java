@@ -1,80 +1,41 @@
 package shellybekhor.dexi;
 
+import android.content.Intent;
+import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.SeekBar;
-import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
-
-    Runner runner;
-    int speedChange = 0;
-    private volatile boolean threadRunning = false;
-    final Thread timer = new Thread(new Runnable() {
-        @Override
-        public void run() {
-        }
-    });
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-        SeekBar speedBar = (SeekBar) findViewById(R.id.speedBar);
-        speedBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            int progressChangedValue = 0;
-
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                progressChangedValue = progress;
-            }
-
-            public void onStartTrackingTouch(SeekBar seekBar) {
-                // TODO Auto-generated method stub
-            }
-
-            public void onStopTrackingTouch(SeekBar seekBar) {
-                System.out.println(progressChangedValue);
-                speedChange = progressChangedValue;
-            }
-        });
-
-        runner = new Runner(this);
-        runner.start();
-        start();
-
+        setContentView(R.layout.main);
     }
 
-    public void start(){
-        Thread t = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                while (runner.isPause()) {
-                    try {
-                        timer.sleep(runner.getSpeed());
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            runner.progress();
-                            runner.setSpeed(speedChange);
-                        }
-                    });
-                }
-            }
-        });
-        t.start();
+    public void sendMessage(View view) {
+        Intent intent = new Intent(MainActivity.this, GameSylsActivity.class);
+        startActivity(intent);
     }
 
-    public void toPause(View view){
-        if(! runner.isPause()){
-            start();
-        }
-        runner.setPause();
-    }
 
+
+    public void audioPlayer(View view){
+        //set up MediaPlayer
+        MediaPlayer mp = MediaPlayer.create(MainActivity.this, R.raw.aound);
+        mp.start();
+
+//        try {
+//            mp.setDataSource(audioName);
+//            mp.prepare();
+//            mp.start();
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+    }
 
 }
