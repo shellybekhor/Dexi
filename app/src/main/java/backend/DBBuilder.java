@@ -68,11 +68,9 @@ public class DBBuilder {
         Map<String, String> map = new HashMap<>();
 
         map.put("CHAF", "ך");
-        map.put("KAF","ך");
         map.put("MEM", "ם");
         map.put("NUN", "ן");
         map.put("FEY", "ף");
-        map.put("PEY", "ף");
         map.put("TSADI", "ץ");
         return map;
     }

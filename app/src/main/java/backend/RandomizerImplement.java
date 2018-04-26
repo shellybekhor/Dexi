@@ -55,7 +55,7 @@ public class RandomizerImplement implements SequenceRandomizer {
     private String getNotEndConsonant(String notToRepeat){
         String letterKey = consonantKeys.get(randomMaker.nextInt(consonantKeysSize));
         // looking for a regular letter (not terminal letter) that not just have been written
-        while (consonant.get(letterKey)==notToRepeat||endConsonant.containsKey(letterKey)) {
+        while (consonant.get(letterKey).equals(notToRepeat)||endConsonant.containsKey(letterKey)) {
             letterKey = consonantKeys.get(randomMaker.nextInt(consonantKeysSize));
         }
         return letterKey;
