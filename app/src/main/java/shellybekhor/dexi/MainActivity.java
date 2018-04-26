@@ -38,6 +38,7 @@ public class MainActivity extends Activity {
         RandomizerImplement r = new RandomizerImplement();
         Syllable s = new Syllable("ALEFxHOLAM","");
         s.play(MainActivity.this);
+        int x;
     }
 
 }
