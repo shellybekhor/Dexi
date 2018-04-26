@@ -7,12 +7,14 @@ import android.view.View;
 import android.widget.RelativeLayout;
 
 public class GameWordActivity extends AppCompatActivity {
-    GameWordRunner runner = new GameWordRunner(this);
+    GameWordRunner runner;
+    Thread timer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_word);
+        runner = new GameWordRunner(this);
         runner.runIteration();
     }
 
