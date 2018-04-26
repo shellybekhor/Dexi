@@ -33,6 +33,7 @@ public class GameSylsRunner {
         setText(this.prev, " ");
         setText(this.cur, randomizer.getNextSymbol());
         setText(this.next, randomizer.getNextSymbol());
+        pause = true;
     }
 
     public void progress(){
@@ -45,9 +46,6 @@ public class GameSylsRunner {
         setText(this.next, next);
     }
 
-    public void stop(){
-
-    }
 
     public boolean isPause() {
         return pause;

@@ -1,5 +1,6 @@
 package shellybekhor.dexi;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -11,7 +12,7 @@ public class GameSylsActivity extends AppCompatActivity {
 
     GameSylsRunner gameSylsRunner;
     Thread timer;
-    int speedChange = 0;
+    int speedChange = 1000;
     int progressCounter = 0;
     View progressView;
 
@@ -34,24 +35,26 @@ public class GameSylsActivity extends AppCompatActivity {
             @Override
             public void run() {
                 while (gameSylsRunner.isPause()) {
-
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            gameSylsRunner.progress();
-                            gameSylsRunner.setSpeed(speedChange);
-//                            int w = progressCalc(progressCounter++);
-//                            LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(w, 50);
-//                            progressView.setLayoutParams(layoutParams);
-//                            System.out.println(w);
-                        }
-                    });
-
                     try {
                         timer.sleep(gameSylsRunner.getSpeed());
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            if(progressCounter == NUM_SYLS){
+                                backToMenu(findViewById(R.id.stopButton));
+                            }
+                            gameSylsRunner.setSpeed(speedChange);
+                            gameSylsRunner.progress();
+                            progressCounter++;
+                            int w = progressCalc(progressCounter);
+                            progressView.getLayoutParams().width = w;
+                            System.out.println(progressCounter);
+                            System.out.println(w);
+                        }
+                    });
                 }
             }
         });
@@ -77,6 +80,7 @@ public class GameSylsActivity extends AppCompatActivity {
                 setSpeedChange(progressChangedValue);
             }
         });
+        start();
     }
 
 
@@ -94,7 +98,12 @@ public class GameSylsActivity extends AppCompatActivity {
 
 
     private int progressCalc(int cur){
-        return (cur / NUM_SYLS) * 250;
+        return 10 + (cur * 600 / NUM_SYLS);
+    }
+
+    public void backToMenu(View view) {
+        Intent intent = new Intent(GameSylsActivity.this, MainActivity.class);
+        startActivity(intent);
     }
 }
 
