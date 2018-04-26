@@ -8,39 +8,8 @@
     tools:context=".GameSylsActivity">
 
 
-    <Button
-        android:id="@+id/stopButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="11dp"
-        android:onClick="backToMenu"
-        android:text="Back" />
-
-    <Button
-        android:id="@+id/pauseButton"
-        android:layout_width="72dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_below="@+id/speedBar"
-        android:layout_marginEnd="29dp"
-        android:layout_marginTop="-61dp"
-        android:onClick="toPause"
-        android:text="Pause" />
-
     <ImageView
-        android:id="@+id/progress"
-        android:layout_width="172dp"
-        android:layout_height="50dp"
-        android:layout_alignBottom="@+id/pauseButton"
-        android:layout_alignStart="@+id/stopButton"
-        android:contentDescription="TODO"
-        android:src="@color/colorPrimary" />
-
-    <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/circles"
         android:layout_width="wrap_content"
         android:layout_height="418px"
         android:layout_alignParentStart="true"
@@ -57,6 +26,7 @@
         android:layout_marginStart="43dp"
         android:layout_marginTop="233dp"
         android:text="T"
+        android:textColor="@color/purple3"
         android:textSize="50sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/prevConst"
@@ -66,31 +36,37 @@
         android:id="@+id/prevConst"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/curConst"
         android:layout_alignParentEnd="true"
-        android:layout_marginEnd="45dp"
+        android:layout_alignTop="@+id/nextConst"
+        android:layout_marginEnd="42dp"
         android:text="T"
+        android:textColor="@color/purple3"
         android:textSize="50sp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/nextConst"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/prevConst"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/curConst"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/imageView2"
+        android:layout_alignTop="@+id/circles"
         android:layout_centerHorizontal="true"
-        android:fontFamily="@font/alef_regular"
+        android:fontFamily="@font/alef_bold"
         android:gravity="center"
         android:text="T"
+        android:textColor="@color/purple3"
+        android:textColorLink="@color/purple3"
         android:textSize="90sp" />
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/sliderBack"
         android:layout_width="918px"
         android:layout_height="103px"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
+        android:layout_centerInParent="false"
+        android:layout_centerVertical="false"
         android:layout_marginBottom="135dp"
         android:baselineAlignBottom="false"
         android:src="@drawable/slider" />
@@ -104,11 +80,15 @@
         android:layout_marginBottom="105dp"
         android:max="2000"
         android:min="500"
+        android:nestedScrollingEnabled="false"
         android:progress="1000"
-        android:thumb="@drawable/slider_circle" />
+        android:progressDrawable="@android:color/transparent"
+        android:scrollbars="none"
+        android:thumb="@drawable/slider_circle_small"
+        android:visibility="visible" />
 
     <ImageView
-        android:id="@+id/imageView4"
+        android:id="@+id/topLogo"
         android:layout_width="245px"
         android:layout_height="104px"
         android:layout_alignParentEnd="true"
@@ -117,11 +97,60 @@
         android:src="@drawable/top_logo" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/progBack"
+        android:layout_width="298dp"
+        android:layout_height="86dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="-30dp"
+        android:layout_toStartOf="@+id/prevConst"
+        android:src="@drawable/purple2" />
+
+    <ImageView
+        android:id="@+id/BackButton"
+        android:layout_width="47dp"
+        android:layout_height="47dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:clickable="true"
+        android:onClick="backToMenu"
+        android:src="@drawable/ic_highlight_off_black_24dp" />
+
+    <ImageView
+        android:id="@+id/progress"
+        android:layout_width="172dp"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/stopButton"
+        android:layout_marginBottom="11dp"
+        android:contentDescription="TODO"
+        android:src="@color/yellow" />
+
+    <ImageView
+        android:id="@+id/progFrame"
         android:layout_width="wrap_content"
         android:layout_height="208px"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
-        android:src="@drawable/progress_bar" />
+        android:src="@drawable/progress_bar_alpha" />
+
+    <ImageView
+        android:id="@+id/pause"
+        android:layout_width="47dp"
+        android:layout_height="68dp"
+        android:layout_alignEnd="@+id/topLogo"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="-3dp"
+        android:clickable="true"
+        android:onClick="toPause"
+        android:src="@drawable/ic_pause_circle_outline_black_24dp" />
+
+    <ImageView
+        android:id="@+id/divider"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/progress"
+        android:layout_alignParentStart="true"
+        android:src="@drawable/divider" />
 
 </RelativeLayout>
