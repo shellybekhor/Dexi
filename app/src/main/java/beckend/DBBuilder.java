@@ -9,6 +9,8 @@ import java.util.Map;
 public class DBBuilder {
     private static Map<String, String> vowels;
     private static Map<String, String> consonant;
+    private static Map<String, String> standaloneVowels;
+    private static Map<String, String> endConsonant;
 
     private static Map<String, String> buildConsonantMap() {
         Map<String, String> map = new HashMap<>();
@@ -47,6 +49,17 @@ public class DBBuilder {
         return map;
     }
 
+    private static Map<String, String> buildEndConsonantMap() {
+        Map<String, String> map = new HashMap<>();
+
+        map.put("CHAF_SOFIT", "ך");
+        map.put("MEM_SOFIT", "ם");
+        map.put("NUN_SOFIT", "ן");
+        map.put("FEY_SOFIT", "ף");
+        map.put("TSADI_SOFIT", "ץ");
+        return map;
+    }
+
     private static Map<String, String> buildVowelsMap() {
         Map<String, String> map = new HashMap<>();
 
@@ -63,6 +76,14 @@ public class DBBuilder {
         return map;
     }
 
+    private static Map<String, String> buildStandaloneVowelsMap() {
+        Map<String, String> map = new HashMap<>();
+
+        map.put("HOLAM_HASER_FOR_VAV", "וֺ");
+        map.put("SHURUQ", "וּ");
+        return map;
+    }
+
     public static Map<String, String> getVowels() {
         if (vowels == null)
             vowels = buildVowelsMap();
@@ -70,9 +91,22 @@ public class DBBuilder {
         return vowels;
     }
 
+    public static Map<String, String> getStandaloneVowels() {
+        if (standaloneVowels == null)
+            standaloneVowels = buildStandaloneVowelsMap();
+
+        return standaloneVowels;
+    }
+
     public static Map<String, String> getConsonant() {
         if (consonant == null)
             consonant = buildConsonantMap();
         return consonant;
+    }
+
+    public static Map<String, String> getEndConsonant() {
+        if (endConsonant == null)
+            endConsonant = buildEndConsonantMap();
+        return endConsonant;
     }
 }
