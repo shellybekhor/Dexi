@@ -18,6 +18,16 @@
         android:text="Game Syls" />
 
     <Button
+        android:id="@+id/game_words"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="204dp"
+        android:onClick="moveToGameWords"
+        android:text="Game Syls" />
+
+    <Button
         android:id="@+id/trybutton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

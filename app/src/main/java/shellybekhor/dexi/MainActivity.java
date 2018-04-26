@@ -22,6 +22,11 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void moveToGameWords(View view) {
+        Intent intent = new Intent(MainActivity.this, GameWordActivity.class);
+        startActivity(intent);
+    }
+
 
 
     public void audioPlayer(View view){
