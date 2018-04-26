@@ -51,8 +51,6 @@ public class GameSylsActivity extends AppCompatActivity {
                             progressCounter++;
                             int w = progressCalc(progressCounter);
                             progressView.getLayoutParams().width = w;
-                            System.out.println(progressCounter);
-                            System.out.println(w);
                         }
                     });
                 }
