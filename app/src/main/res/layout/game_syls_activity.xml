@@ -4,46 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/game1_bg_1800_game1"
+    android:background="@drawable/bg"
     tools:context=".GameSylsActivity">
-
-
-    <TextView
-        android:id="@+id/nextConst"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/prevConst"
-        android:layout_toStartOf="@+id/speedBar"
-        android:text="T"
-        android:textSize="40sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/prevConst"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/prevConst"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="245dp"
-        android:layout_toEndOf="@+id/speedBar"
-        android:text="T"
-        android:textSize="40sp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/nextConst"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <TextView
-        android:id="@+id/curConst"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="193dp"
-        android:background="@drawable/testcircle1"
-        android:fontFamily="@font/alef_regular"
-        android:gravity="center"
-        android:text="T"
-        android:textSize="70sp" />
 
 
     <Button
@@ -61,31 +23,105 @@
         android:id="@+id/pauseButton"
         android:layout_width="72dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginBottom="13dp"
-        android:layout_marginEnd="14dp"
+        android:layout_below="@+id/speedBar"
+        android:layout_marginEnd="29dp"
+        android:layout_marginTop="-61dp"
         android:onClick="toPause"
         android:text="Pause" />
 
-    <SeekBar
-        android:id="@+id/speedBar"
-        android:layout_width="236dp"
-        android:layout_height="93dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="83dp"
-        android:max="2000"
-        android:min="500"
-        android:progress="1000" />
-
     <ImageView
         android:id="@+id/progress"
-        android:layout_width="0dp"
+        android:layout_width="172dp"
         android:layout_height="50dp"
         android:layout_alignBottom="@+id/pauseButton"
         android:layout_alignStart="@+id/stopButton"
         android:contentDescription="TODO"
         android:src="@color/colorPrimary" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="418px"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="175dp"
+        android:src="@drawable/circles" />
+
+    <TextView
+        android:id="@+id/nextConst"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="43dp"
+        android:layout_marginTop="233dp"
+        android:text="T"
+        android:textSize="50sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/prevConst"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/prevConst"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/curConst"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="45dp"
+        android:text="T"
+        android:textSize="50sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/nextConst"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/curConst"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/imageView2"
+        android:layout_centerHorizontal="true"
+        android:fontFamily="@font/alef_regular"
+        android:gravity="center"
+        android:text="T"
+        android:textSize="90sp" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="918px"
+        android:layout_height="103px"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="135dp"
+        android:baselineAlignBottom="false"
+        android:src="@drawable/slider" />
+
+    <SeekBar
+        android:id="@+id/speedBar"
+        android:layout_width="306dp"
+        android:layout_height="93dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="105dp"
+        android:max="2000"
+        android:min="500"
+        android:progress="1000"
+        android:thumb="@drawable/slider_circle" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="245px"
+        android:layout_height="104px"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="50px"
+        android:layout_marginTop="55px"
+        android:src="@drawable/top_logo" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="208px"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:src="@drawable/progress_bar" />
 
 </RelativeLayout>
