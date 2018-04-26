@@ -97,7 +97,7 @@ public class GameSylsActivity extends Activity {
 
 
     private int progressCalc(int cur){
-        return 10 + (cur * 600 / NUM_SYLS);
+        return (cur * 600 / NUM_SYLS);
     }
 
     public void backToMenu(View view) {

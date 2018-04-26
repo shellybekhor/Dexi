@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/game1_bg"
+    android:background="@drawable/game1_bg_1800_game1"
     tools:context=".GameSylsActivity">
 
 
@@ -61,10 +61,10 @@
         android:id="@+id/pauseButton"
         android:layout_width="72dp"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
-        android:layout_below="@+id/speedBar"
-        android:layout_marginEnd="29dp"
-        android:layout_marginTop="-61dp"
+        android:layout_marginBottom="13dp"
+        android:layout_marginEnd="14dp"
         android:onClick="toPause"
         android:text="Pause" />
 
@@ -81,7 +81,7 @@
 
     <ImageView
         android:id="@+id/progress"
-        android:layout_width="10dp"
+        android:layout_width="0dp"
         android:layout_height="50dp"
         android:layout_alignBottom="@+id/pauseButton"
         android:layout_alignStart="@+id/stopButton"
