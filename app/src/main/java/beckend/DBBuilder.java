@@ -82,6 +82,7 @@ public class DBBuilder {
 
         //map.put("SHVA", "ְ");
         map.put("HIRIQ", "ִ");
+        map.put("HIRIQ_MALE", "ִי");
         map.put("TSERE", "ֵ");
         map.put("SEGOL", "ֶ");
         map.put("PATAH", "ַ");
