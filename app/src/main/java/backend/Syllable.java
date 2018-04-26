@@ -1,4 +1,4 @@
-package beckend;
+package backend;
 
 public class Syllable {
     private String key;

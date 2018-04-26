@@ -1,11 +1,10 @@
 package shellybekhor.dexi;
 
-import android.view.View;
 import android.widget.TextView;
 import android.support.v7.app.AppCompatActivity;
 
-import beckend.RandomizerImplement;
-import beckend.SequenceRandomizer;
+import backend.RandomizerImplement;
+import backend.SequenceRandomizer;
 
 public class GameSylsRunner {
     private static final int DEFAULT_SPEED = 1000;

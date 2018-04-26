@@ -1,4 +1,4 @@
-package beckend;
+package backend;
 
 public interface SequenceRandomizer {
     //returns a symbol of a vowel or a consonant
