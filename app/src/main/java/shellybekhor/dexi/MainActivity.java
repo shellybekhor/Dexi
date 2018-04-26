@@ -10,8 +10,12 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.SeekBar;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import backend.RandomizerImplement;
 import backend.Syllable;
+import backend.Word;
 
 public class MainActivity extends Activity {
 
@@ -36,8 +40,11 @@ public class MainActivity extends Activity {
     public void audioPlayer(View view){
         //set up MediaPlayer
         RandomizerImplement r = new RandomizerImplement();
-        Syllable s = new Syllable("ALEFxHOLAM","");
-        s.play(MainActivity.this);
+        List<Syllable> a = new ArrayList<>();
+        a.add(new Syllable("SHINxTSERE",""));
+        a.add(new Syllable("LAMEDxHIRIQ",""));
+        Word w = new Word(a);
+        w.play(MainActivity.this);
     }
 
 }
