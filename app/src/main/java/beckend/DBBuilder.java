@@ -3,11 +3,15 @@ package beckend;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * this class build the database of the vowels (nikkud) and consonants (itsurim)
+ */
 public class DBBuilder {
-    private static Map<String,String> vowels;
-    private static Map<String,String> consonant;
-    private static Map<String, String> buildVowelsMap() {
-        HashMap<String, String> map = new HashMap<>();
+    private static Map<String, String> vowels;
+    private static Map<String, String> consonant;
+
+    private static Map<String, String> buildConsonantMap() {
+        Map<String, String> map = new HashMap<>();
 
         map.put("ALEF", "א");
         map.put("VET", "ב");
@@ -43,7 +47,33 @@ public class DBBuilder {
         map.put("EMPTY", "⬚");
         return map;
     }
-    private static Map<String, String> buildConsonantMap() {return null;}
-    public static Map<String, String> getVowels(){return null;}
-    public static Map<String, String> getConsonant(){return null;}
+
+    private static Map<String, String> buildVowelsMap() {
+        Map<String, String> map = new HashMap<>();
+
+        map.put("SHVA", "ְ");
+        map.put("HIRIQ", "ִ");
+        map.put("TSERE", "ֵ");
+        map.put("SEGOL", "ֶ");
+        map.put("PATAH", "ַ");
+        map.put("QAMATS", "ָ");
+        map.put("HOLAM", "ֹ");
+        map.put("HOLAM_HASER_FOR_VAV", "וֺ");
+        map.put("QUBUTS", "ֻ");
+        map.put("SHURUQ", "וּ");
+        return map;
+    }
+
+    public static Map<String, String> getVowels() {
+        if (vowels == null)
+            vowels = buildVowelsMap();
+
+        return vowels;
+    }
+
+    public static Map<String, String> getConsonant() {
+        if (consonant == null)
+            consonant = buildConsonantMap();
+        return consonant;
+    }
 }
