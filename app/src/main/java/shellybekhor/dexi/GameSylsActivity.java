@@ -3,12 +3,17 @@ package shellybekhor.dexi;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.SeekBar;
 
 public class GameSylsActivity extends AppCompatActivity {
+    private static final int NUM_SYLS = 100;
+
     GameSylsRunner gameSylsRunner;
     Thread timer;
     int speedChange = 0;
+    int progressCounter = 0;
+    View progressView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,6 +25,7 @@ public class GameSylsActivity extends AppCompatActivity {
             public void run() {
             }
         });
+        progressView = findViewById(R.id.progress);
         runGameSyls();
     }
 
@@ -34,6 +40,10 @@ public class GameSylsActivity extends AppCompatActivity {
                         public void run() {
                             gameSylsRunner.progress();
                             gameSylsRunner.setSpeed(speedChange);
+//                            int w = progressCalc(progressCounter++);
+//                            LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(w, 50);
+//                            progressView.setLayoutParams(layoutParams);
+//                            System.out.println(w);
                         }
                     });
 
@@ -49,6 +59,7 @@ public class GameSylsActivity extends AppCompatActivity {
     }
 
     public void runGameSyls() {
+        gameSylsRunner.start();
         SeekBar speedBar = findViewById(R.id.speedBar);
         speedBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             int progressChangedValue = 0;
@@ -82,5 +93,8 @@ public class GameSylsActivity extends AppCompatActivity {
     }
 
 
+    private int progressCalc(int cur){
+        return (cur / NUM_SYLS) * 250;
+    }
 }
 

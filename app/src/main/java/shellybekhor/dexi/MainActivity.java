@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.main);
     }
 
-    public void sendMessage(View view) {
+    public void moveToGameSyls(View view) {
         Intent intent = new Intent(MainActivity.this, GameSylsActivity.class);
         startActivity(intent);
     }
@@ -26,8 +26,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void audioPlayer(View view){
         //set up MediaPlayer
-        MediaPlayer mp = MediaPlayer.create(MainActivity.this, R.raw.aound);
-        mp.start();
+//        MediaPlayer mp = MediaPlayer.create(MainActivity.this, R.raw.BET$QAMATS);
+//        mp.start();
 
 //        try {
 //            mp.setDataSource(audioName);

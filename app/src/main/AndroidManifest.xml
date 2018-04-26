@@ -17,7 +17,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".GameSylsActivity" ></activity>
-        <activity android:name=".Main2Activity"></activity>
     </application>
 
 </manifest>
