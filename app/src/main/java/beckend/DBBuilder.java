@@ -11,6 +11,7 @@ public class DBBuilder {
     private static Map<String, String> consonant;
     private static Map<String, String> standaloneVowels;
     private static Map<String, String> endConsonant;
+    private static Map<String, String> hasEndConsonant;
 
     private static Map<String, String> buildConsonantMap() {
         Map<String, String> map = new HashMap<>();
@@ -57,6 +58,19 @@ public class DBBuilder {
         map.put("NUN_SOFIT", "ן");
         map.put("FEY_SOFIT", "ף");
         map.put("TSADI_SOFIT", "ץ");
+        return map;
+    }
+
+    private static Map<String, String> buildHasEndConsonantMap() {
+        Map<String, String> map = new HashMap<>();
+
+        map.put("CHAF", "ך");
+        map.put("KAF", "ך");
+        map.put("MEM", "ם");
+        map.put("NUN", "ן");
+        map.put("FEY", "ף");
+        map.put("PEY", "ף");
+        map.put("TSADI", "ץ");
         return map;
     }
 
@@ -108,5 +122,11 @@ public class DBBuilder {
         if (endConsonant == null)
             endConsonant = buildEndConsonantMap();
         return endConsonant;
+    }
+
+    public static Map<String, String> getHasEndConsonant() {
+        if (hasEndConsonant == null)
+            hasEndConsonant = buildHasEndConsonantMap();
+        return hasEndConsonant;
     }
 }
