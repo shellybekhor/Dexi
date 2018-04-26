@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="204dp"
+        android:layout_marginTop="214dp"
         android:onClick="moveToGameSyls"
         android:text="Game Syls" />
 
@@ -23,9 +23,9 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="204dp"
+        android:layout_marginTop="118dp"
         android:onClick="moveToGameWords"
-        android:text="Game Syls" />
+        android:text="Game Words" />
 
     <Button
         android:id="@+id/trybutton"
