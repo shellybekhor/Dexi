@@ -6,7 +6,7 @@ public class RandomizerImplement implements SequenceRandomizer {
 
     static Map<String, String> vowels;
     static Map<String, String> consonant;
-    static Map<String, String> standaloneVwels;
+    static Map<String, String> standaloneVowels;
     static Map<String, String> endConsonant;
     static Map<String, String> hasEndConsonant;
     static List<String> vowelsKeys;
@@ -20,7 +20,7 @@ public class RandomizerImplement implements SequenceRandomizer {
     public RandomizerImplement(){
         vowels = DBBuilder.getVowels();
         consonant = DBBuilder.getConsonant();
-        standaloneVwels = DBBuilder.getStandaloneVowels();
+        standaloneVowels = DBBuilder.getStandaloneVowels();
         endConsonant = DBBuilder.getEndConsonant();
         hasEndConsonant = DBBuilder.getHasEndConsonant();
         vowelsKeys = new ArrayList<String>(vowels.keySet());
@@ -31,7 +31,7 @@ public class RandomizerImplement implements SequenceRandomizer {
     }
     @Override
     /**
-     * returns a consonant or a vowel randomly in ratio 2:1
+     * returns a consonant or a vowel randomly in probability 2:1
      */
     public String getNextSymbol() {
         int randomNum = randomMaker.nextInt(3);
@@ -44,12 +44,15 @@ public class RandomizerImplement implements SequenceRandomizer {
         // returns a vowel
         else{
             randomKey = vowelsKeys.get(randomMaker.nextInt(vowelsKeysSize));
+            if(standaloneVowels.containsKey(randomKey))
+                return vowels.get(randomKey);
             return vowels.get(randomKey)+EMPTY;
         }
     }
 
     private String getNotEndConsonant(){
         String phoneKey = consonantKeys.get(randomMaker.nextInt(consonantKeysSize));
+        // looking for a regular consonant and not end consonant
         while (endConsonant.containsKey(phoneKey)) {
             phoneKey = consonantKeys.get(randomMaker.nextInt(consonantKeysSize));
         }
@@ -66,12 +69,12 @@ public class RandomizerImplement implements SequenceRandomizer {
 
     private String makePhone(boolean endWord){
         String phone = getNotEndConsonant();
-        phone.concat(vowels.get(vowelsKeys.get(randomMaker.nextInt(vowelsKeysSize))));
+        phone = phone.concat(vowels.get(vowelsKeys.get(randomMaker.nextInt(vowelsKeysSize))));
         if (randomMaker.nextBoolean()) {
             if (endWord)
-                phone.concat(getNotEndConsonant());
+                phone = phone.concat(getNotEndConsonant());
             else
-                phone.concat(getEndConsonant());
+                phone = phone.concat(getEndConsonant());
         }
         return phone;
     }
@@ -80,9 +83,9 @@ public class RandomizerImplement implements SequenceRandomizer {
     public String getWord() {
         String word = makePhone(false);
         if (randomMaker.nextBoolean()) {
-            word.concat(makePhone(false));
+            word = word.concat(makePhone(false));
         }
-        word.concat(makePhone(true));
+        word = word.concat(makePhone(true));
         return word;
     }
 }
