@@ -28,6 +28,7 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginTop="18dp"
+        android:onClick="backToMenu"
         android:text="Back" />
 
     <RelativeLayout
@@ -67,13 +68,14 @@
     </RelativeLayout>
 
     <ImageView
-        android:id="@+id/progress"
+        android:id="@+id/timer"
         android:layout_width="17dp"
         android:layout_height="50dp"
         android:layout_alignEnd="@+id/stopButton"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="192dp"
         android:contentDescription="TODO"
-        android:src="@color/colorPrimary" />
+        android:src="@color/colorPrimary"
+        android:visibility="gone" />
 
 </RelativeLayout>
