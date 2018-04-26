@@ -8,8 +8,8 @@ public class RandomizerImplement implements SequenceRandomizer {
     static Map<String, String> consonant;
     static List<String> vowelsKeys;
     static List<String> consonantKeys;
-    int vowelsKeysSize;
-    int consonantKeysSize;
+    static int vowelsKeysSize;
+    static int consonantKeysSize;
     static String EMPTY = "⬚";
 
 
@@ -37,7 +37,7 @@ public class RandomizerImplement implements SequenceRandomizer {
         // returns a vowel
         else{
             randomKey = vowelsKeys.get(rand.nextInt(vowelsKeysSize));
-            return vowels.get(randomKey);
+            return vowels.get(randomKey)+EMPTY;
         }
     }
 }
