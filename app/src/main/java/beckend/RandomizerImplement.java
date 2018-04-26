@@ -49,7 +49,7 @@ public class RandomizerImplement implements SequenceRandomizer {
             return vowels.get(randomKey)+EMPTY;
         }
     }
-
+    // returns only regular consonants (not end of word consonant)
     private String getNotEndConsonant(){
         String phoneKey = consonantKeys.get(randomMaker.nextInt(consonantKeysSize));
         // looking for a regular consonant and not end consonant
@@ -61,6 +61,7 @@ public class RandomizerImplement implements SequenceRandomizer {
 
     private String getEndConsonant(){
         String phoneKey = consonantKeys.get(randomMaker.nextInt(consonantKeysSize));
+        //if the letter has an end-of-word version, return that
         if (hasEndConsonant.containsKey(phoneKey)) {
             return hasEndConsonant.get(phoneKey);
         }
@@ -72,9 +73,9 @@ public class RandomizerImplement implements SequenceRandomizer {
         phone = phone.concat(vowels.get(vowelsKeys.get(randomMaker.nextInt(vowelsKeysSize))));
         if (randomMaker.nextBoolean()) {
             if (endWord)
-                phone = phone.concat(getNotEndConsonant());
-            else
                 phone = phone.concat(getEndConsonant());
+            else
+                phone = phone.concat(getNotEndConsonant());
         }
         return phone;
     }

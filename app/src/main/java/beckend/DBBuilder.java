@@ -9,8 +9,11 @@ import java.util.Map;
 public class DBBuilder {
     private static Map<String, String> vowels;
     private static Map<String, String> consonant;
+    //vowels that doesn't need a letter to concat to
     private static Map<String, String> standaloneVowels;
+    //end of word letters
     private static Map<String, String> endConsonant;
+    //letters that have a end of word version
     private static Map<String, String> hasEndConsonant;
 
     private static Map<String, String> buildConsonantMap() {
@@ -65,7 +68,7 @@ public class DBBuilder {
         Map<String, String> map = new HashMap<>();
 
         map.put("CHAF", "ך");
-        map.put("KAF", "ך");
+        map.put("KAF","ך");
         map.put("MEM", "ם");
         map.put("NUN", "ן");
         map.put("FEY", "ף");
@@ -90,6 +93,10 @@ public class DBBuilder {
         return map;
     }
 
+    /**
+     * building a stand alone vowels map
+     * @return
+     */
     private static Map<String, String> buildStandaloneVowelsMap() {
         Map<String, String> map = new HashMap<>();
 
