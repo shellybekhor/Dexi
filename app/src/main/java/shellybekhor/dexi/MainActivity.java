@@ -10,6 +10,9 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.SeekBar;
 
+import backend.RandomizerImplement;
+import backend.Syllable;
+
 public class MainActivity extends Activity {
 
     @Override
@@ -32,16 +35,9 @@ public class MainActivity extends Activity {
 
     public void audioPlayer(View view){
         //set up MediaPlayer
-//        MediaPlayer mp = MediaPlayer.create(MainActivity.this, R.raw.BET$QAMATS);
-//        mp.start();
-
-//        try {
-//            mp.setDataSource(audioName);
-//            mp.prepare();
-//            mp.start();
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
+        RandomizerImplement r = new RandomizerImplement();
+        Syllable s = new Syllable("ALEFxHOLAM","");
+        s.play(MainActivity.this);
     }
 
 }

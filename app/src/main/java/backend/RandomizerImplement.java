@@ -14,8 +14,9 @@ public class RandomizerImplement implements SequenceRandomizer {
     static int vowelsKeysSize;
     static int consonantKeysSize;
     Random randomMaker;
-    static String EMPTY = "⬚";
-    static String SHVA = "ְ";
+    static final String EMPTY = "⬚";
+    static final String SHVA = "ְ";
+    private static final String SEPERATOR = "x";
 
 
     public RandomizerImplement(){
@@ -74,7 +75,7 @@ public class RandomizerImplement implements SequenceRandomizer {
         String key = getNotEndConsonant("");
         String rep = consonant.get(key);
         String notToRepeat = rep;
-        key = key.concat("x");
+        key = key.concat(SEPERATOR);
         String tmpKey = vowelsKeys.get(randomMaker.nextInt(vowelsKeysSize));
         key += tmpKey;
         rep += vowels.get(tmpKey);
@@ -87,7 +88,7 @@ public class RandomizerImplement implements SequenceRandomizer {
             tmpKey = getNotEndConsonant(notToRepeat);
             rep+=consonant.get(tmpKey) + SHVA;
         }
-        key += "x"+tmpKey;
+        key += SEPERATOR+tmpKey;
         return new Syllable(key,rep);
     }
 
@@ -109,7 +110,7 @@ public class RandomizerImplement implements SequenceRandomizer {
         // add a letter
         String key = getNotEndConsonant("");
         String rep = consonant.get(key);
-        key = key.concat("x");
+        key = key.concat(SEPERATOR);
         // add a vowel to the letter
         String tmpKey = vowelsKeys.get(randomMaker.nextInt(vowelsKeysSize));
         key += tmpKey;
@@ -120,7 +121,7 @@ public class RandomizerImplement implements SequenceRandomizer {
             tmpKey = getEndConsonant("");
             rep+=consonant.get(tmpKey);
         }
-        key += "x"+tmpKey;
+        key += SEPERATOR+tmpKey;
         return new Syllable(key,rep);
     }
 
