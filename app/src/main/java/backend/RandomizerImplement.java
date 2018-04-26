@@ -70,11 +70,11 @@ public class RandomizerImplement implements SequenceRandomizer {
         return letterKey;
     }
 
-    public Syllable makeSyllable(boolean endWord, boolean consonantAtEnd){
+    private Syllable makeSyllable(boolean endWord, boolean consonantAtEnd){
         String key = getNotEndConsonant("");
         String rep = consonant.get(key);
         String notToRepeat = rep;
-        key = key.concat("$");
+        key = key.concat("x");
         String tmpKey = vowelsKeys.get(randomMaker.nextInt(vowelsKeysSize));
         key += tmpKey;
         rep += vowels.get(tmpKey);
@@ -87,7 +87,7 @@ public class RandomizerImplement implements SequenceRandomizer {
             tmpKey = getNotEndConsonant(notToRepeat);
             rep+=consonant.get(tmpKey) + SHVA;
         }
-        key += "$"+tmpKey;
+        key += "x"+tmpKey;
         return new Syllable(key,rep);
     }
 
@@ -103,4 +103,25 @@ public class RandomizerImplement implements SequenceRandomizer {
         syllables.add(makeSyllable(true, true));
         return new Word(syllables);
     }
+
+    @Override
+    public Syllable getSyllable() {
+        // add a letter
+        String key = getNotEndConsonant("");
+        String rep = consonant.get(key);
+        key = key.concat("x");
+        // add a vowel to the letter
+        String tmpKey = vowelsKeys.get(randomMaker.nextInt(vowelsKeysSize));
+        key += tmpKey;
+        rep += vowels.get(tmpKey);
+        tmpKey = "";
+        // add a terminal letter (sometimes happens)
+        if (randomMaker.nextBoolean()) {
+            tmpKey = getEndConsonant("");
+            rep+=consonant.get(tmpKey);
+        }
+        key += "x"+tmpKey;
+        return new Syllable(key,rep);
+    }
+
 }

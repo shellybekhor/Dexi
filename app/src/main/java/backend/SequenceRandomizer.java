@@ -5,4 +5,6 @@ public interface SequenceRandomizer {
     String getNextSymbol();
     //returns a word
     Word getWord();
+    //returns a syllable
+    Syllable getSyllable();
 }
