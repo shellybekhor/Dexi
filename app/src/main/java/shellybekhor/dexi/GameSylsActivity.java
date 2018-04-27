@@ -105,6 +105,7 @@ public class GameSylsActivity extends Activity {
     public void backToMenu(View view) {
         Intent intent = new Intent(GameSylsActivity.this, MainActivity.class);
         startActivity(intent);
+        finish();
     }
 
     public void end(){
