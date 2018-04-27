@@ -2,6 +2,8 @@ package shellybekhor.dexi;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Handler;
+import android.os.Looper;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -19,6 +21,8 @@ public class GameSylsActivity extends Activity {
     int speedChange = 1000;
     int progressCounter = 0;
     View progressView;
+    boolean finish = false;
+    Handler myHandler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,8 +37,7 @@ public class GameSylsActivity extends Activity {
         progressView = findViewById(R.id.progress);
         runGameSyls();
     }
-
-    public void start(){
+    public void start() {
         Thread t = new Thread(new Runnable() {
             @Override
             public void run() {
@@ -49,6 +52,7 @@ public class GameSylsActivity extends Activity {
                         public void run() {
                             if(progressCounter == NUM_SYLS){
                                 progressCounter = 0;
+                                finish = true;
                                 end();
                             }
                             gameSylsRunner.setSpeed(speedChange);
@@ -58,6 +62,10 @@ public class GameSylsActivity extends Activity {
                             progressView.getLayoutParams().width = w;
                         }
                     });
+                    if(finish)
+                    {
+                        break;
+                    }
                 }
             }
         });
@@ -86,8 +94,8 @@ public class GameSylsActivity extends Activity {
     }
 
 
-    public void toPause(View view){
-        if(! gameSylsRunner.isPause()){
+    public void toPause(View view) {
+        if (!gameSylsRunner.isPause()) {
             start();
         }
         gameSylsRunner.setPause();
@@ -99,21 +107,19 @@ public class GameSylsActivity extends Activity {
     }
 
 
-    private int progressCalc(int cur){
+    private int progressCalc(int cur) {
         return (cur * 800 / NUM_SYLS);
     }
 
     public void backToMenu(View view) {
         Intent intent = new Intent(GameSylsActivity.this, MainActivity.class);
         startActivity(intent);
-        finish();
     }
 
-    public void end(){
+    public void end() {
         Intent intent = new Intent(GameSylsActivity.this, WinnerActivity.class);
         intent.putExtra("fromGame", 1);
         startActivity(intent);
-        finish();
     }
 }
 
