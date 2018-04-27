@@ -48,6 +48,7 @@ public class GameSylsActivity extends Activity {
                         @Override
                         public void run() {
                             if(progressCounter == NUM_SYLS){
+                                progressCounter = 0;
                                 end();
                             }
                             gameSylsRunner.setSpeed(speedChange);
