@@ -6,21 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".GameWordActivity">
 
-    <TextView
-        android:id="@+id/showWord"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="112dp"
-        android:text="מילה"
-        android:textSize="70sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/prevConst"
-        app:layout_constraintTop_toTopOf="parent" />
-
-
     <Button
         android:id="@+id/stopButton"
         android:layout_width="wrap_content"
@@ -67,15 +52,26 @@
             android:text="Fail" />
     </RelativeLayout>
 
+    <TextView
+        android:id="@+id/showWord"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="112dp"
+        android:text="מילה"
+        android:textSize="70sp"
+        app:layout_constraintEnd_toStartOf="@+id/prevConst" />
+
     <ImageView
-        android:id="@+id/timer"
-        android:layout_width="17dp"
+        android:id="@+id/timerBar"
+        android:layout_width="wrap_content"
         android:layout_height="50dp"
-        android:layout_alignEnd="@+id/stopButton"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="192dp"
-        android:contentDescription="TODO"
-        android:src="@color/colorPrimary"
-        android:visibility="gone" />
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="78dp"
+        app:srcCompat="@color/colorPrimary" />
+
 
 </RelativeLayout>
