@@ -73,7 +73,7 @@
 
     <SeekBar
         android:id="@+id/speedBar"
-        android:layout_width="306dp"
+        android:layout_width="340dp"
         android:layout_height="93dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
@@ -81,10 +81,11 @@
         android:max="2000"
         android:min="500"
         android:nestedScrollingEnabled="false"
-        android:progress="1000"
+        android:progress="100"
         android:progressDrawable="@android:color/transparent"
         android:scrollbars="none"
-        android:thumb="@drawable/slider_circle_small"
+        android:thumb="@drawable/ic_adjust_black_70dp"
+        android:thumbOffset="15dp"
         android:visibility="visible" />
 
     <ImageView
