@@ -14,7 +14,7 @@
         android:layout_height="76dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="17dp"
+        android:layout_marginTop="35dp"
         android:src="@drawable/menu_logo" />
 
     <ImageView
@@ -42,7 +42,7 @@
         android:layout_height="123dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="173dp"
+        android:layout_marginBottom="156dp"
         android:clickable="true"
         android:onClick="moveToGameWords"
         android:src="@drawable/menu_word" />
