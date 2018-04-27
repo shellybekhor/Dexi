@@ -18,7 +18,7 @@ public class GameWordActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_game_word);
+        setContentView(R.layout.game_words_activity);
         timer = new Thread(new Runnable() {
             @Override
             public void run() {
@@ -26,7 +26,30 @@ public class GameWordActivity extends AppCompatActivity {
         });
         runner = new GameWordRunner(this, timer);
         runner.startIteration();
-        /*Thread t = new Thread(new Runnable() {
+        /**/
+        /*Timer t = new Timer();
+        t.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        runner.progress();
+                    }
+                });
+            }
+        }, 0, 100);*/
+        /*ScheduledExecutorService scheduleTaskExecutor = Executors.newScheduledThreadPool(5);
+
+        scheduleTaskExecutor.scheduleAtFixedRate(new Runnable() {
+            public void run() {
+                runner.progress();
+            }
+        }, 0, 100, TimeUnit.MILLISECONDS);*/
+    }
+
+    private void setTimer(){
+        Thread t = new Thread(new Runnable() {
             @Override
             public void run() {
                 while (runner.getIteration()) {
@@ -44,24 +67,15 @@ public class GameWordActivity extends AppCompatActivity {
                 }
             }
         });
-        t.start();*/
-        /*final Timer t = new Timer();
-        t.schedule(new TimerTask() {
-            @Override
-            public void run() {
-                runner.progress();
-                if (!runner.getIteration()) t.cancel();
-            }
-        }, 0, 100);*/
-        ScheduledExecutorService scheduleTaskExecutor = Executors.newScheduledThreadPool(5);
-
-        scheduleTaskExecutor.scheduleAtFixedRate(new Runnable() {
-            public void run() {
-                runner.progress();
-            }
-        }, 0, 100, TimeUnit.MILLISECONDS);
+        t.start();
     }
 
+    public void runGame() {
+        while (true) {
+            runner.startIteration();
+            setTimer();
+        }
+    }
 
     public void backToMenu(View view) {
         Intent intent = new Intent(GameWordActivity.this, MainActivity.class);
