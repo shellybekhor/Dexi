@@ -7,16 +7,9 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.util.Timer;
-import java.util.TimerTask;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
-
 import backend.*;
 
 public class GameWordActivity extends AppCompatActivity {
-    //GameWordRunner runner;
     Thread timer;
     private TextView showWord;
     private ImageView readWord;
@@ -45,7 +38,7 @@ public class GameWordActivity extends AppCompatActivity {
         startIteration();
     }
 
-    public void play(View view){
+    public void play(View view) {
         if (newWord != null) newWord.play(GameWordActivity.this);
     }
 
@@ -66,15 +59,15 @@ public class GameWordActivity extends AppCompatActivity {
         });
     }
 
-    private void endIteration(boolean isSuccess){
+    private void endIteration(boolean isSuccess) {
         if (isSuccess) {
-            if(prog.getLayoutParams().width >= 830){
+            if (prog.getLayoutParams().width >= 830) {
                 end();
                 return;
             }
-            prog.getLayoutParams().width +=20;
+            prog.getLayoutParams().width += 30;
         } else {
-            if(prog.getLayoutParams().width > 0) {
+            if (prog.getLayoutParams().width > 0) {
                 prog.getLayoutParams().width -= 20;
             }
         }
@@ -86,7 +79,7 @@ public class GameWordActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void end(){
+    public void end() {
         Intent intent = new Intent(GameWordActivity.this, WinnerActivity.class);
         intent.putExtra("fromGame", 2);
         startActivity(intent);
