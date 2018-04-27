@@ -14,7 +14,7 @@ public class Statistics implements Serializable {
         statistics.put(WORD_GAME, new GameStatistics(WORD_GAME));
     }
 
-    public void statUp(String game) {
-        statistics.get(game).statUp();
+    public GameStatistics getGameStat(String game) {
+        return statistics.get(game);
     }
 }

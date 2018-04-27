@@ -13,7 +13,7 @@ import java.io.ObjectOutputStream;
 public class ExternalDataHandler {
     private final static String statsFilename = "stats";
     private final File statsFile;
-    public Statistics statistics;
+    private Statistics statistics;
 
     public ExternalDataHandler(Context context) {
         statsFile = new File(context.getFilesDir().getPath(), statsFilename);
@@ -37,5 +37,9 @@ public class ExternalDataHandler {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public Statistics getStatisticsObject() {
+        return statistics;
     }
 }
