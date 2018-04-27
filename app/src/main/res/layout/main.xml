@@ -4,28 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/menu_bg"
     tools:context=".MainActivity"
     tools:layout_editor_absoluteY="81dp">
-
-    <Button
-        android:id="@+id/game_syls"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="214dp"
-        android:onClick="moveToGameSyls"
-        android:text="Game Syls" />
-
-    <Button
-        android:id="@+id/game_words"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="118dp"
-        android:onClick="moveToGameWords"
-        android:text="Game Words" />
 
     <Button
         android:id="@+id/trybutton"
@@ -33,8 +14,43 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="155dp"
+        android:layout_marginBottom="116dp"
         android:onClick="audioPlayer"
         android:text="try" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="456px"
+        android:layout_height="76dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="17dp"
+        android:src="@drawable/menu_logo" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="954px"
+        android:layout_height="96dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="12dp"
+        android:src="@drawable/menu_bottom_bar" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="484px"
+        android:layout_height="176dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="111dp"
+        android:src="@drawable/menu_syl" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="890px"
+        android:layout_height="123dp"
+        android:layout_below="@+id/imageView3"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/menu_word" />
 
 </RelativeLayout>
