@@ -43,7 +43,6 @@
         android:textColor="@color/purple3"
         android:textSize="50sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/prevConst"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
