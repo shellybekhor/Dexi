@@ -45,7 +45,7 @@ public class GameSylsActivity extends Activity {
                         @Override
                         public void run() {
                             if(progressCounter == NUM_SYLS){
-                                backToMenu(findViewById(R.id.stopButton));
+                                end();
                             }
                             gameSylsRunner.setSpeed(speedChange);
                             gameSylsRunner.progress();
@@ -102,6 +102,12 @@ public class GameSylsActivity extends Activity {
 
     public void backToMenu(View view) {
         Intent intent = new Intent(GameSylsActivity.this, MainActivity.class);
+        startActivity(intent);
+    }
+
+    public void end(){
+        Intent intent = new Intent(GameSylsActivity.this, WinnerActivity.class);
+        intent.putExtra("fromGame", 1);
         startActivity(intent);
     }
 }
