@@ -18,13 +18,13 @@ public class GameSylsActivity extends Activity {
     int speedChange = 1000;
     int progressCounter = 0;
     View progressView;
-//    GameStatistics gameStats;
+    GameStatistics gameStats;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.game_syls_activity);
-//        gameStats = getIntent().getParcelableExtra("gameStats");
+        gameStats = getIntent().getParcelableExtra("gameStats");
         gameSylsRunner = new GameSylsRunner(this);
         timer = new Thread(new Runnable() {
             @Override
@@ -111,7 +111,7 @@ public class GameSylsActivity extends Activity {
     public void end(){
         Intent intent = new Intent(GameSylsActivity.this, WinnerActivity.class);
         intent.putExtra("fromGame", 1);
-//        gameStats.statUp();
+        gameStats.statUp();
         startActivity(intent);
     }
 }
