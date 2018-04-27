@@ -22,16 +22,22 @@ import backend.Word;
 public class MainActivity extends Activity {
     ExternalDataHandler handler;
     Statistics statistics;
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        handler = new ExternalDataHandler(MainActivity.this);
+        handler.readExternalData();
+        statistics = handler.getStatisticsObject();
+
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
-        // TODO should move to launcher
-//        handler = new ExternalDataHandler(MainActivity.this);
-//        handler.readExternalData();
 
 //        handler = getIntent().getParcelableExtra("externalDataHandler");
-//        statistics = handler.getStatisticsObject();
 //        handler.writeExternalData();
     }
 
@@ -48,15 +54,14 @@ public class MainActivity extends Activity {
     }
 
 
-
-    public void audioPlayer(View view){
+    public void audioPlayer(View view) {
         //set up MediaPlayer
         RandomizerImplement r = new RandomizerImplement();
         List<Syllable> a = new ArrayList<>();
-        a.add(new Syllable("SHINxTSERE",""));
-        a.add(new Syllable("LAMEDxHIRIQ",""));
-        a.add(new Syllable("SHINxPATAHxNUN",""));
-        a.add(new Syllable("MEMxQUBUTSxREISH",""));
+        a.add(new Syllable("SHINxTSERE", ""));
+        a.add(new Syllable("LAMEDxHIRIQ", ""));
+        a.add(new Syllable("SHINxPATAHxNUN", ""));
+        a.add(new Syllable("MEMxQUBUTSxREISH", ""));
         Word w = new Word(a);
         w.play(MainActivity.this);
     }
