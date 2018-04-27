@@ -43,6 +43,8 @@ public class MainActivity extends Activity {
         List<Syllable> a = new ArrayList<>();
         a.add(new Syllable("SHINxTSERE",""));
         a.add(new Syllable("LAMEDxHIRIQ",""));
+        a.add(new Syllable("SHINxPATAHxNUN",""));
+        a.add(new Syllable("MEMxQUBUTSxREISH",""));
         Word w = new Word(a);
         w.play(MainActivity.this);
     }

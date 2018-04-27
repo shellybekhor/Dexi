@@ -11,32 +11,33 @@ public class GameWordRunner {
     private Button readWord;
     private Button success;
     private Button fail;
-    private ImageView timer;
+    private ImageView timerBar;
     private RelativeLayout timeUp;
     private SequenceRandomizer randomizer;
     Thread timerThread;
+    AppCompatActivity app;
+    int iteration = 0;
+    int width = 10;
 
-    public GameWordRunner(AppCompatActivity app){
+    public GameWordRunner(AppCompatActivity app, Thread timerThread){
         showWord = app.findViewById(R.id.showWord);
         readWord = app.findViewById(R.id.readWord);
         success = app.findViewById(R.id.success);
         fail = app.findViewById(R.id.fail);
-        timer = app.findViewById(R.id.timer);
+        timerBar = app.findViewById(R.id.timerBar);
         timeUp = app.findViewById(R.id.timeUp);
         randomizer = new RandomizerImplement();
-        timerThread = new Thread(new Runnable() {
-            @Override
-            public void run() {
-            }
-        });
+        this.timerThread = timerThread;
+        this.app = app;
+
     }
 
-    public void runIteration() {
-        Word newWord = randomizer.getWord();
+    public void startIteration() {
+        final Word newWord = randomizer.getWord();
         readWord.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //todo - add word.play method when done
+                newWord.play(app);
             }
         });
         success.setOnClickListener(new View.OnClickListener() {
@@ -52,8 +53,21 @@ public class GameWordRunner {
             }
         });
         showWord.setText(newWord.toString());
-        setTimer();
-        timeUp.setVisibility(View.VISIBLE);
+        timerBar.setVisibility(View.VISIBLE);
+    }
+
+    public void progress(){
+        iteration++;
+        if (iteration <= 10){
+            width += 50;
+            System.out.println(width);
+            timerBar.getLayoutParams().width = width;
+        }
+        else {
+            timerBar.getLayoutParams().width = 300;
+            timeUp.setVisibility(View.VISIBLE);
+            iteration = 0;
+        }
     }
 
     private void endIteration(boolean isSuccess){
@@ -63,33 +77,10 @@ public class GameWordRunner {
         } else {
 
         }
-        runIteration();
+        startIteration();
     }
 
-    private void setTimer(){
-        for (int i =0; i < 1000; ++i) {
-            setTimeout(new Runnable() {
-                @Override
-                public void run() {
-                    timer.getLayoutParams().width += 6;
-                }
-            }, 1);
-
-        }
-    }
-
-    public static void setTimeout(final Runnable runnable, final int delay){
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    Thread.sleep(delay);
-                    runnable.run();
-                } catch (Exception e) {
-                    System.err.println(e);
-                }
-            }
-        }).start();
-
+    public boolean getIteration(){
+        return iteration < 10;
     }
 }

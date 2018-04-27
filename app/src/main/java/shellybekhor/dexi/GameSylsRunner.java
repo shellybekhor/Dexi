@@ -37,7 +37,6 @@ public class GameSylsRunner {
     }
 
     public void progress(){
-        System.out.println("progress");
         String prev = cur.getText().toString();
         String cur = next.getText().toString();
         String next = randomizer.getNextSymbol();

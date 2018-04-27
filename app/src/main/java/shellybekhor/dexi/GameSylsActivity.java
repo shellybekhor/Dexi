@@ -75,7 +75,6 @@ public class GameSylsActivity extends Activity {
             }
 
             public void onStopTrackingTouch(SeekBar seekBar) {
-                System.out.println(progressChangedValue);
                 setSpeedChange(progressChangedValue);
             }
         });
