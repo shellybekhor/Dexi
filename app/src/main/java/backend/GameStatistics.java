@@ -8,10 +8,15 @@ import java.util.Date;
 
 public class GameStatistics implements Serializable {
     private static final long serialVersionUID = 1L;
+    private final String name;
     private long lastPlayed;
     private int counter = 0;
 
-    public void setPlayedToday() {
+    public GameStatistics(String name) {
+        this.name = name;
+    }
+
+    private void setPlayedToday() {
         Date today = Calendar.getInstance().getTime();
         lastPlayed = today.getTime();
     }
@@ -20,4 +25,12 @@ public class GameStatistics implements Serializable {
         return DateUtils.isToday(lastPlayed);
     }
 
+    private void countUp() {
+        counter++;
+    }
+
+    public void statUp() {
+        countUp();
+        setPlayedToday();
+    }
 }

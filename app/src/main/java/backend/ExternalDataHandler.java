@@ -8,14 +8,14 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
 public class ExternalDataHandler {
-    private static final String statsPath = "";
-    private Statistics statistics;
+    private static final String statsPath = "stats_save";
+    public Statistics statistics;
 
     public ExternalDataHandler() {
-        readExternalData();
+
     }
 
-    private void readExternalData() {
+    public void readExternalData() {
         try {
             ObjectInputStream ois = new ObjectInputStream(new FileInputStream(statsPath));
             statistics = (Statistics) ois.readObject();
