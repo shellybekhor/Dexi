@@ -77,6 +77,15 @@ public class GameWordActivity extends AppCompatActivity {
     public void backToMenu(View view) {
         Intent intent = new Intent(GameWordActivity.this, MainActivity.class);
         startActivity(intent);
+        finish();
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent = new Intent(GameWordActivity.this, MainActivity.class);
+        startActivity(intent);
+        finish();
     }
 
     public void end() {

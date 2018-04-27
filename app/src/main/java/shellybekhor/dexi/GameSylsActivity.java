@@ -118,6 +118,15 @@ public class GameSylsActivity extends Activity {
         finish();
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish = true;
+        Intent intent = new Intent(GameSylsActivity.this, MainActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
     public void end() {
         Intent intent = new Intent(GameSylsActivity.this, WinnerActivity.class);
         intent.putExtra("fromGame", 1);
