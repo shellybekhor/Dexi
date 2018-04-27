@@ -9,8 +9,9 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.Serializable;
 
-public class ExternalDataHandler {
+public class ExternalDataHandler implements Serializable {
     private final static String statsFilename = "stats";
     private final File statsFile;
     private Statistics statistics;

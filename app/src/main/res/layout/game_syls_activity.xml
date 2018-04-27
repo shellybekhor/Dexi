@@ -118,7 +118,7 @@
 
     <ImageView
         android:id="@+id/progress"
-        android:layout_width="172dp"
+        android:layout_width="0dp"
         android:layout_height="50dp"
         android:layout_alignParentBottom="true"
         android:layout_alignStart="@+id/stopButton"

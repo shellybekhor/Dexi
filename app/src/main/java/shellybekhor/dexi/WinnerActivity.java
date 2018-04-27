@@ -8,13 +8,13 @@ import android.view.View;
 
 public class WinnerActivity extends AppCompatActivity {
 
-    public int fromGame;
+    public int fromGame = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_winner);
-        fromGame = getIntent().getParcelableExtra("fromGame");
+        fromGame = getIntent().getIntExtra("fromGame",0);
         MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.success);
         mediaPlayer.start();
     }

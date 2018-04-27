@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bg"
     tools:context=".WinnerActivity"
     tools:deviceIds="wear">
 
@@ -19,12 +20,23 @@
 
     <Button
         android:id="@+id/replayButton"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="112dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="118dp"
         android:onClick="replay"
         android:text="replay" />
+
+    <ImageView
+        android:id="@+id/topLogo"
+        android:layout_width="245px"
+        android:layout_height="104px"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="50px"
+        android:layout_marginTop="55px"
+        android:src="@drawable/top_logo" />
+
 
 </RelativeLayout>

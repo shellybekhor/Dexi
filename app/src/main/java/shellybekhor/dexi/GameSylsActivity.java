@@ -8,23 +8,22 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.SeekBar;
 
+import backend.ExternalDataHandler;
 import backend.GameStatistics;
 
 public class GameSylsActivity extends Activity {
-    private static final int NUM_SYLS = 100;
+    private static final int NUM_SYLS = 20;
 
     GameSylsRunner gameSylsRunner;
     Thread timer;
     int speedChange = 1000;
     int progressCounter = 0;
     View progressView;
-    GameStatistics gameStats;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.game_syls_activity);
-        gameStats = getIntent().getParcelableExtra("gameStats");
         gameSylsRunner = new GameSylsRunner(this);
         timer = new Thread(new Runnable() {
             @Override
@@ -100,7 +99,7 @@ public class GameSylsActivity extends Activity {
 
 
     private int progressCalc(int cur){
-        return (cur * 600 / NUM_SYLS);
+        return (cur * 800 / NUM_SYLS);
     }
 
     public void backToMenu(View view) {
@@ -111,7 +110,6 @@ public class GameSylsActivity extends Activity {
     public void end(){
         Intent intent = new Intent(GameSylsActivity.this, WinnerActivity.class);
         intent.putExtra("fromGame", 1);
-        gameStats.statUp();
         startActivity(intent);
     }
 }
