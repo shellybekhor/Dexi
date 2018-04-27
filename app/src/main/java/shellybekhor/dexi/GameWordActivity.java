@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -11,9 +13,19 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
+import backend.*;
+
 public class GameWordActivity extends AppCompatActivity {
-    GameWordRunner runner;
+    //GameWordRunner runner;
     Thread timer;
+    private TextView showWord;
+    private ImageView readWord;
+    private ImageView success;
+    private ImageView fail;
+    private ImageView prog;
+    private SequenceRandomizer randomizer;
+    Word newWord;
+    int width = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,61 +36,60 @@ public class GameWordActivity extends AppCompatActivity {
             public void run() {
             }
         });
-        runner = new GameWordRunner(this, timer);
-        runner.startIteration();
-        /**/
-        /*Timer t = new Timer();
-        t.schedule(new TimerTask() {
-            @Override
-            public void run() {
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        runner.progress();
-                    }
-                });
-            }
-        }, 0, 100);*/
-        /*ScheduledExecutorService scheduleTaskExecutor = Executors.newScheduledThreadPool(5);
-
-        scheduleTaskExecutor.scheduleAtFixedRate(new Runnable() {
-            public void run() {
-                runner.progress();
-            }
-        }, 0, 100, TimeUnit.MILLISECONDS);*/
+        showWord = findViewById(R.id.showWord);
+        readWord = findViewById(R.id.readWord);
+        success = findViewById(R.id.success);
+        fail = findViewById(R.id.fail);
+        prog = findViewById(R.id.progress);
+        randomizer = new RandomizerImplement();
+        startIteration();
     }
 
-    private void setTimer(){
-        Thread t = new Thread(new Runnable() {
+    public void play(View view){
+        if (newWord != null) newWord.play(GameWordActivity.this);
+    }
+
+    public void startIteration() {
+        newWord = randomizer.getWord();
+        showWord.setText(newWord.toString());
+        success.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void run() {
-                while (runner.getIteration()) {
-                    try {
-                        timer.sleep(100);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            runner.progress();
-                        }
-                    });
-                }
+            public void onClick(View view) {
+                endIteration(true);
             }
         });
-        t.start();
+        fail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                endIteration(false);
+            }
+        });
     }
 
-    public void runGame() {
-        while (true) {
-            runner.startIteration();
-            setTimer();
+    private void endIteration(boolean isSuccess){
+        if (isSuccess) {
+            if(prog.getLayoutParams().width >= 830){
+                end();
+                return;
+            }
+            prog.getLayoutParams().width +=20;
+        } else {
+            if(prog.getLayoutParams().width > 0) {
+                prog.getLayoutParams().width -= 20;
+            }
         }
+        startIteration();
     }
 
     public void backToMenu(View view) {
         Intent intent = new Intent(GameWordActivity.this, MainActivity.class);
         startActivity(intent);
+    }
+
+    public void end(){
+        Intent intent = new Intent(GameWordActivity.this, WinnerActivity.class);
+        intent.putExtra("fromGame", 2);
+        startActivity(intent);
+        finish();
     }
 }

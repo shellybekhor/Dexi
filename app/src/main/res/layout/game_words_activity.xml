@@ -39,7 +39,7 @@
 
     <ImageView
         android:id="@+id/progress"
-        android:layout_width="172dp"
+        android:layout_width="20dp"
         android:layout_height="50dp"
         android:layout_alignParentBottom="true"
         android:layout_alignStart="@+id/stopButton"
@@ -49,21 +49,11 @@
 
     <ImageView
         android:id="@+id/progFrame"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="208px"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
         android:src="@drawable/progress_bar_alpha" />
-
-    <ImageView
-        android:id="@+id/pause"
-        android:layout_width="47dp"
-        android:layout_height="68dp"
-        android:layout_alignEnd="@+id/topLogo"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="-3dp"
-        android:clickable="true"
-        android:src="@drawable/ic_pause_circle_outline_black_24dp" />
 
     <ImageView
         android:id="@+id/divider"
@@ -112,6 +102,7 @@
         android:layout_below="@+id/imageView5"
         android:layout_centerHorizontal="true"
         android:clickable="true"
+        android:onClick="play"
         android:src="@drawable/ic_play_circle_filled_black_24dp" />
 
     <ImageView
@@ -133,5 +124,7 @@
         android:layout_marginStart="43dp"
         android:clickable="true"
         android:src="@drawable/ic_close_black_24dp" />
+
+
 
 </RelativeLayout>
