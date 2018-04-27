@@ -112,6 +112,7 @@ public class GameSylsActivity extends Activity {
         Intent intent = new Intent(GameSylsActivity.this, WinnerActivity.class);
         intent.putExtra("fromGame", 1);
         startActivity(intent);
+        finish();
     }
 }
 
