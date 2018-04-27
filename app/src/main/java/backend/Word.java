@@ -27,10 +27,8 @@ public class Word {
     }
 
     public void play(Context context) {
-        if (!ready) {
-            player = new WordPlayer(context);
-            ready = true;
-        }
+        player = new WordPlayer(context);
+        ready = true;
         player.play();
     }
 
