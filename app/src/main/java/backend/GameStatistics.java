@@ -21,16 +21,20 @@ public class GameStatistics implements Serializable {
         lastPlayed = today.getTime();
     }
 
-    public boolean playedToday() {
-        return DateUtils.isToday(lastPlayed);
-    }
-
     private void countUp() {
         counter++;
+    }
+
+    public boolean playedToday() {
+        return DateUtils.isToday(lastPlayed);
     }
 
     public void statUp() {
         countUp();
         setPlayedToday();
+    }
+
+    public int numPlayed() {
+        return counter;
     }
 }
