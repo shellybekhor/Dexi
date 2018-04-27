@@ -33,24 +33,35 @@ public class RandomizerImplement implements SequenceRandomizer {
     }
     @Override
     /**
-     * returns a consonant or a vowel randomly in probability 2:1
+     * returns a syllable
      */
-    public String getNextSymbol() {
-        int randomNum = randomMaker.nextInt(3);
-        String randomKey;
-        // return a consonant
-        if(randomNum > 0){
-            randomKey = consonantKeys.get(randomMaker.nextInt(consonantKeysSize));
-            return consonant.get(randomKey);
+    public String getNextSymbol(){
+        String key = getNotEndConsonant("");
+        String symbol = consonant.get(key);
+        // add also vowel
+        if(randomMaker.nextBoolean()){
+            key = vowelsKeys.get(randomMaker.nextInt(vowelsKeysSize));
+            symbol += vowels.get(key);
         }
-        // returns a vowel
-        else{
-            randomKey = vowelsKeys.get(randomMaker.nextInt(vowelsKeysSize));
-            if(standaloneVowels.containsKey(randomKey))
-                return vowels.get(randomKey);
-            return vowels.get(randomKey)+EMPTY;
-        }
+
+        return symbol;
     }
+//    public String getNextSymbol() {
+//        int randomNum = randomMaker.nextInt(3);
+//        String randomKey;
+//        // return a consonant
+//        if(randomNum > 0){
+//            randomKey = consonantKeys.get(randomMaker.nextInt(consonantKeysSize));
+//            return consonant.get(randomKey);
+//        }
+//        // returns a vowel
+//        else{
+//            randomKey = vowelsKeys.get(randomMaker.nextInt(vowelsKeysSize));
+//            if(standaloneVowels.containsKey(randomKey))
+//                return vowels.get(randomKey);
+//            return vowels.get(randomKey)+EMPTY;
+//        }
+//    }
     // returns only regular consonants (not end of word consonant)
 
     private String getNotEndConsonant(String notToRepeat){
