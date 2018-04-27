@@ -90,8 +90,9 @@
         android:id="@+id/readWord"
         android:layout_width="250px"
         android:layout_height="250px"
-        android:layout_below="@+id/imageView5"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
+        android:layout_marginBottom="181dp"
         android:clickable="true"
         android:onClick="play"
         android:src="@drawable/ic_play_circle_filled_black_24dp" />
@@ -110,10 +111,10 @@
         android:id="@+id/fail"
         android:layout_width="70dp"
         android:layout_height="70dp"
-        android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
-        android:layout_marginBottom="118dp"
-        android:layout_marginStart="43dp"
+        android:layout_below="@+id/readWord"
+        android:layout_marginStart="68dp"
+        android:layout_marginTop="-181dp"
         android:clickable="true"
         android:src="@drawable/ic_close_black_24dp" />
 
