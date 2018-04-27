@@ -43,7 +43,9 @@ public class RandomizerImplement implements SequenceRandomizer {
             key = vowelsKeys.get(randomMaker.nextInt(vowelsKeysSize));
             symbol += vowels.get(key);
         }
-
+        else{
+            symbol+=SHVA;
+        }
         return symbol;
     }
 //    public String getNextSymbol() {
