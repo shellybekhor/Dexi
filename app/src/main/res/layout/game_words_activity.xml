@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg"
-    tools:context=".GameSylsActivity">
+    tools:context=".GameWordActivity">
 
 
     <ImageView
@@ -63,7 +63,6 @@
         android:layout_alignParentBottom="true"
         android:layout_marginEnd="-3dp"
         android:clickable="true"
-        android:onClick="toPause"
         android:src="@drawable/ic_pause_circle_outline_black_24dp" />
 
     <ImageView
@@ -84,7 +83,7 @@
         android:src="@drawable/menu_word" />
 
     <TextView
-        android:id="@+id/curConst"
+        android:id="@+id/showWord"
         android:layout_width="wrap_content"
         android:layout_height="77dp"
         android:layout_alignParentTop="true"
@@ -107,28 +106,32 @@
         android:layout_marginBottom="218dp" />
 
     <ImageView
-        android:id="@+id/imageView7"
+        android:id="@+id/readWord"
         android:layout_width="250px"
         android:layout_height="250px"
         android:layout_below="@+id/imageView5"
         android:layout_centerHorizontal="true"
+        android:clickable="true"
         android:src="@drawable/ic_play_circle_filled_black_24dp" />
 
     <ImageView
-        android:id="@+id/imageView8"
+        android:id="@+id/success"
         android:layout_width="70dp"
         android:layout_height="70dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignStart="@+id/topLogo"
-        android:layout_marginBottom="109dp"
+        android:layout_alignTop="@+id/fail"
+        android:layout_toEndOf="@+id/readWord"
+        android:clickable="true"
         android:src="@drawable/ic_check_black_24dp" />
 
     <ImageView
-        android:id="@+id/imageView9"
+        android:id="@+id/fail"
         android:layout_width="70dp"
         android:layout_height="70dp"
-        android:layout_alignStart="@+id/imageView5"
-        android:layout_alignTop="@+id/imageView8"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="118dp"
+        android:layout_marginStart="43dp"
+        android:clickable="true"
         android:src="@drawable/ic_close_black_24dp" />
 
 </RelativeLayout>

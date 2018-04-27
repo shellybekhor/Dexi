@@ -11,9 +11,9 @@ import backend.*;
 
 public class GameWordRunner {
     private TextView showWord;
-    private Button readWord;
-    private Button success;
-    private Button fail;
+    private ImageView readWord;
+    private ImageView success;
+    private ImageView fail;
     private ImageView timerBar;
     private RelativeLayout timeUp;
     private SequenceRandomizer randomizer;
@@ -58,8 +58,8 @@ public class GameWordRunner {
             }
         });
         showWord.setText(newWord.toString());
-        timeUp.setVisibility(View.VISIBLE);
-        timerBar.setVisibility(View.GONE);
+//        timeUp.setVisibility(View.VISIBLE);
+//        timerBar.setVisibility(View.GONE);
     }
 
     private void setTimer(){
