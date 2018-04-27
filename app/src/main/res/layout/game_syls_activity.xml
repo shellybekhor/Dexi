@@ -80,7 +80,7 @@
         android:max="2000"
         android:min="500"
         android:nestedScrollingEnabled="false"
-        android:progress="100"
+        android:progress="1000"
         android:progressDrawable="@android:color/transparent"
         android:scrollbars="none"
         android:thumb="@drawable/ic_adjust_black_70dp"

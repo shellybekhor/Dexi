@@ -8,16 +8,6 @@
     tools:context=".MainActivity"
     tools:layout_editor_absoluteY="81dp">
 
-    <Button
-        android:id="@+id/trybutton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="116dp"
-        android:onClick="audioPlayer"
-        android:text="try" />
-
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="456px"
@@ -40,17 +30,21 @@
         android:id="@+id/imageView3"
         android:layout_width="484px"
         android:layout_height="176dp"
-        android:layout_alignParentTop="true"
+        android:layout_above="@+id/imageView4"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="111dp"
+        android:clickable="true"
+        android:onClick="moveToGameSyls"
         android:src="@drawable/menu_syl" />
 
     <ImageView
         android:id="@+id/imageView4"
         android:layout_width="890px"
         android:layout_height="123dp"
-        android:layout_below="@+id/imageView3"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
+        android:layout_marginBottom="173dp"
+        android:clickable="true"
+        android:onClick="moveToGameWords"
         android:src="@drawable/menu_word" />
 
 </RelativeLayout>
