@@ -30,20 +30,20 @@ public class MainActivity extends Activity {
 //        handler = new ExternalDataHandler(MainActivity.this);
 //        handler.readExternalData();
 
-        handler = getIntent().getParcelableExtra("externalDataHandler");
-        statistics = handler.getStatisticsObject();
-        handler.writeExternalData();
+//        handler = getIntent().getParcelableExtra("externalDataHandler");
+//        statistics = handler.getStatisticsObject();
+//        handler.writeExternalData();
     }
 
     public void moveToGameSyls(View view) {
         Intent intent = new Intent(MainActivity.this, GameSylsActivity.class);
-        intent.putExtra("gameStats",statistics.getGameStat(Statistics.SYMBOL_GAME));
+//        intent.putExtra("gameStats",statistics.getGameStat(Statistics.SYMBOL_GAME));
         startActivity(intent);
     }
 
     public void moveToGameWords(View view) {
         Intent intent = new Intent(MainActivity.this, GameWordActivity.class);
-        intent.putExtra("gameStats",statistics.getGameStat(Statistics.WORD_GAME));
+//        intent.putExtra("gameStats",statistics.getGameStat(Statistics.WORD_GAME));
         startActivity(intent);
     }
 

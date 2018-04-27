@@ -28,7 +28,6 @@
         android:text="T"
         android:textColor="@color/purple3"
         android:textSize="50sp"
-        android:fontFamily="@font/davidLibre_medium"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/prevConst"
         app:layout_constraintTop_toTopOf="parent" />

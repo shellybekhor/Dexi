@@ -111,7 +111,7 @@ public class GameSylsActivity extends Activity {
     public void end(){
         Intent intent = new Intent(GameSylsActivity.this, WinnerActivity.class);
         intent.putExtra("fromGame", 1);
-        gameStats.statUp();
+//        gameStats.statUp();
         startActivity(intent);
     }
 }
