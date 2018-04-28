@@ -1,5 +1,6 @@
 package shellybekhor.dexi;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -9,7 +10,7 @@ import android.widget.TextView;
 
 import backend.*;
 
-public class GameWordActivity extends AppCompatActivity {
+public class GameWordActivity extends Activity {
     Thread timer;
     private TextView showWord;
     private ImageView readWord;
